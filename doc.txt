@@ -1,0 +1,4 @@
+CHOICE-1(Login)
+       2(Sign Up)
+USER type-1(USER)
+          2(ADMIN)
