@@ -62,7 +62,6 @@ int phoneNoInput(char phoneNo[11], int choice, int userType)
     printf("Enter the phone no : ");
     scanf("%s", phoneNo);
     int userValidation = checkUserExist(phoneNo, userType);
-    // printf("%d", userValidation);
     if (userValidation == 501)
       return 1;
 
@@ -93,7 +92,6 @@ void passwordInput(char password[21])
 
 int userValidator(char phoneNo[11], char password[21], int userType)
 {
-
   FILE *fp;
   if (userType == 1)
     fp = fopen("./data/user.txt", "r");
@@ -111,11 +109,9 @@ int userValidator(char phoneNo[11], char password[21], int userType)
     char tempPhone[11] = "";
     for (int i = 0; i < 10; i++)
       tempPhone[i] = data[i];
-    // printf("%s\n", tempPhone);
 
     if (strcmp(tempPhone, phoneNo) == 0)
     {
-      printf("User exists inside\n");
       int i = 11;
       char tempPassword[21] = "";
       while (data[i] != '|')
@@ -123,7 +119,6 @@ int userValidator(char phoneNo[11], char password[21], int userType)
         tempPassword[i - 11] = data[i];
         i++;
       }
-      printf("%s", tempPassword);
       if (!strcmp(password, tempPassword))
       {
         fclose(fp);

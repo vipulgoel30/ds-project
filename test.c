@@ -2,8 +2,19 @@
 #include <string.h>
 int main()
 {
-  char test[20];
-  strcpy(test, "");
-  printf("%d", strlen(test));
-  return 0;
+  FILE *fp;
+  fp = fopen("./test.txt", "r+");
+  if (fp == NULL)
+    printf("Error");
+  while (!feof(fp))
+  {
+    char ch = fgetc(fp);
+    if (ch == 'a')
+    {
+      fseek(fp, -1, SEEK_CUR);
+      fputc('@', fp);
+    }
+  }
+  printf("Done");
+  fclose(fp);
 }
