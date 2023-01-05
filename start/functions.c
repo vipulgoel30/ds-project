@@ -9,16 +9,20 @@ int passwordValidator(char password[21])
   int i = 0;
   while (password[i] != '\0')
   {
+    if (password[i] == '|')
+      return 0;
     if (password[i] >= 'A' && password[i] <= 'Z')
       upper = 1;
     else if (password[i] >= 'a' && password[i] <= 'z')
       lower = 1;
     else if ((password[i] >= ' ' && password[i] <= '/') || (password[i] >= ':' && password[i] <= '@') || (password[i] >= '[' && password[i] <= '`') || (password[i] >= '}' && password[i] <= '~'))
       special = 1;
-    if (lower && upper && special)
-      return 1;
+
     i++;
   }
+  if (lower && upper && special)
+    return 1;
+
   return 0;
 }
 
@@ -32,7 +36,7 @@ int checkUserExist(char phoneNo[11], int userType)
   if (fp == NULL)
   {
     printf("Internal error\n");
-    return 501;
+    return 0;
   }
   while (!feof(fp))
   {
@@ -62,8 +66,6 @@ int phoneNoInput(char phoneNo[11], int choice, int userType)
     printf("Enter the phone no : ");
     scanf("%s", phoneNo);
     int userValidation = checkUserExist(phoneNo, userType);
-    if (userValidation == 501)
-      return 1;
 
     if ((choice == 0 && userValidation == 1) || (choice == 1 && userValidation == 0))
     {
@@ -71,23 +73,27 @@ int phoneNoInput(char phoneNo[11], int choice, int userType)
       choice ? printf("User don't exists!\n") : printf("User already exists\n");
     }
   } while (strlen(phoneNo) != 10);
+  return 1;
 }
 
-void passwordInput(char password[21])
+int passwordInput(char password[21])
 {
-  strcpy(password, "");
   do
   {
     if (strlen(password) != 0)
-      printf("Enter the valid password!\n");
+    {
+      printf("Enter the valid password length (Min 8 charcaters)!\n");
+    }
     printf("Enter the password( Min 8 characters ) : ");
     scanf("%s", password);
     if (!passwordValidator(password))
     {
       strcpy(password, "");
-      printf("Password format - min 8 characters,1 lowercase char, 1 uppercase char, 1 special char\n");
+      printf("Enter the valid password format!!!!\n");
+      printf("Password format - min 8 characters, 1 lowercase char, 1 uppercase char, 1 special char (excluding '|')\n");
     }
   } while (strlen(password) < 8);
+  return 1;
 }
 
 int userValidator(char phoneNo[11], char password[21], int userType)
@@ -127,5 +133,15 @@ int userValidator(char phoneNo[11], char password[21], int userType)
     }
   }
   fclose(fp);
+  return 0;
+}
+
+int checkMoviesExist()
+{
+  FILE *fp;
+  fp = fopen("./data/movies/movies.txt", "r");
+  if (fp == NULL)
+    return 1;
+
   return 0;
 }

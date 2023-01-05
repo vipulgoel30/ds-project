@@ -3,7 +3,7 @@
 
 void createMovieFileAddress(char movieCode[5], char movieAddress[140])
 {
-  strcpy(movieAddress, "./data/movies/movieData/");
+  strcpy(movieAddress, "./data/movies/movie/");
   char endData[] = ".txt";
   strcat(movieAddress, movieCode);
   strcat(movieAddress, endData);
@@ -12,7 +12,7 @@ void createMovieFileAddress(char movieCode[5], char movieAddress[140])
 int movieCodeExist(char movieCode[5])
 {
   FILE *fp;
-  fp = fopen("./data/movies/moviesList.txt", "r");
+  fp = fopen("./data/movies/movies.txt", "r");
   if (fp == NULL)
   {
     printf("Internal error!\n");

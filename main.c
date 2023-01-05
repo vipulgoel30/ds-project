@@ -1,34 +1,23 @@
 #include <stdio.h>
 #include <string.h>
-#include "./functions/signup.c"
-#include "./functions/login.c"
+#include <stdlib.h> //for atoi function
+#include <math.h>
+
+#include "./start/functions.c"
+#include "./start/operations/admin/adminOperationFunctions.c"
+#include "./start/operations/admin/addMovie.c"
+#include "./start/operations/admin/deleteMovie.c"
+#include "./start/operations/admin/showAvaMovies.c"
+#include "./start/login/adminLogin.c" //ADMIN login
+#include "./start/operations/user/userOperationFunctions.c"
+#include "./start/operations/user/bookTicket.c"
+#include "./start/login/userLogin.c" //USER login
+#include "./start/login/login.c"     //LOGIN
+#include "./start/signUp.c"          //SIGNUP
+#include "./start/start.c"           //START
 
 int main()
 {
-  printf("*************************\n");
-  printf("Welcome to 'PVG' Bookings\n");
-  printf("*************************\n");
-  int choice;
-  do
-  {
-    printf("1.Login\n2.SignUp\n3.Exit.....\n");
-    printf("Enter the choice : ");
-    scanf("%d", &choice);
-
-    switch (choice)
-    {
-    case (1): // LOGIN
-    {
-      login();
-      break;
-    }
-    case (2): // SIGN UP
-    {
-      signUp();
-      break;
-    }
-    default:
-      printf("Exiting .....\n");
-    }
-  } while (choice == 1 || choice == 2);
+  start();
+  return 0;
 }

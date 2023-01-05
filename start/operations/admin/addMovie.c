@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-// #include "./adminOperationFunction.c"
+// #include "./start/operations/admin/adminOperationFunction.c"
 
 int addMovie()
 {
@@ -23,7 +23,7 @@ int addMovie()
     scanf(" %s", movieCode);
 
     // Checking if the movie code already exists or not
-    if (movieCodeExist(movieCode))
+    if (checkMoviesExist() == 0 && movieCodeExist(movieCode))
     {
       strcpy(movieCode, "");
       printf("The movie code already exists!\n");
@@ -54,15 +54,16 @@ int addMovie()
   }
   else
   {
-    fp = fopen("./data/movies/moviesList.txt", "a");
+    fp = fopen("./data/movies/movies.txt", "a");
     if (fp == NULL)
     {
       printf("Internal Error!\n");
       return 0;
     }
-    fprintf(fp, "%s|%s|%d|%d|%s\n", movieCode, movieName, price, seats, description);
+    fprintf(fp, "\n%s|%s|%d|%d|%s", movieCode, movieName, price, seats, description);
     fclose(fp);
-    fprintf(ptr, "%s|%s|%d|%d|%s\n", movieCode, movieName, price, seats, description);
+    fprintf(ptr, "%s|%s|%d|%d|%s\n", movieCode, movieName, price, seats, description, seats);
+    fprintf(ptr, "%d\n", seats);
   }
   fclose(ptr);
   return 0;
