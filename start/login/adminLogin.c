@@ -1,4 +1,3 @@
-
 void adminLogin()
 {
   char phoneNo[11] = "";

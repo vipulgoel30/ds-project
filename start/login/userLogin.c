@@ -1,4 +1,3 @@
-
 void userLogin()
 {
   char phoneNo[11] = "";
@@ -17,7 +16,7 @@ void userLogin()
     int userChoice;
     do
     {
-      printf("1.List of available Movies\n2.Check Availability in Movie\n3.Book a movie ticket\n4.Logout....\n");
+      printf("1.List of available Movies\n2.Information about the movie and to check availability\n3.Book a movie ticket\n4.Logout....\n");
       printf("Enter the choice : ");
       scanf("%d", &userChoice);
       switch (userChoice)
