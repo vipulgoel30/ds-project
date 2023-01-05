@@ -62,7 +62,7 @@ int addMovie()
     }
     fprintf(fp, "\n%s|%s|%d|%d|%s", movieCode, movieName, price, seats, description);
     fclose(fp);
-    fprintf(ptr, "%s|%s|%d|%d|%s\n", movieCode, movieName, price, seats, description, seats);
+    fprintf(ptr, "%s|%s|%d|%d|%s\n", movieCode, movieName, price, seats, description);
     fprintf(ptr, "%d\n", seats);
   }
   fclose(ptr);
