@@ -12,7 +12,6 @@ void showAvaMovies()
     fgets(data, 1400, fp);
     if (data[0] == '@')
       continue;
-    printf("%d", data[0] == ' ');
     printf("%d. ", i);
     for (int i = 5; data[i] != '|'; i++)
       printf("%c", data[i]);

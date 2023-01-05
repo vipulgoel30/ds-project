@@ -16,7 +16,7 @@ int noAvalSeatsFind(char movieAddress[140])
     fgets(data, 500, fp);
     count++;
   }
-  return totalSeatsInt - count + 1;
+  return totalSeatsInt - count + 2;
 }
 
 void getMovieCode(int movieNo, char movieCode[])
